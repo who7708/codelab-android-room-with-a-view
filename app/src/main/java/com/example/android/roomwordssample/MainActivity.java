@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android.roomwordssample.compose.MainActivityCompose;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -58,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
+            // Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
+            Intent intent = new Intent(MainActivity.this, MainActivityCompose.class);
             startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
         });
     }

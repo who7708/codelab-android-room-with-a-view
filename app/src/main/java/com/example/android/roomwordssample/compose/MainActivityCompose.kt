@@ -21,6 +21,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
@@ -31,8 +32,10 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.android.roomwordssample.R
 import com.example.android.roomwordssample.compose.ui.theme.CodelabandroidroomwithaviewTheme
+import com.example.android.roomwordssample.compose.word.WordViewModel
 
 class MainActivityCompose : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,14 +59,18 @@ class MainActivityCompose : ComponentActivity() {
 
 @Composable
 fun Greeting(
+    // wordViewModel: WordViewModel = viewModel(),
     name: String,
     modifier: Modifier = Modifier,
     onValueChange: (String) -> Unit = {
         Log.i("test", it)
     },
-) {
+    btnSave: () -> Unit = {
 
-    // val udpUiState by udpBroadcastViewModel.uiState.collectAsState()
+    }
+) {
+    // val udpUiState by wordViewModel.uiState.collectAsState()
+
     val mediumPadding = dimensionResource(R.dimen.big_padding)
 
     Card(
@@ -106,7 +113,9 @@ fun Greeting(
             )
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { }
+                onClick = {
+                    btnSave()
+                }
             ) {
                 Text(
                     text = stringResource(R.string.button_save),
